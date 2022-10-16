@@ -33,4 +33,5 @@
 
 @section('script')
     @include('partial.map')
+    
 @endsection 
