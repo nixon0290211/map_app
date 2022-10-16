@@ -14,7 +14,9 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('shops.index');
+    
+　　　$shops = Shop::all();
+    return view('shops.index', compact('shops'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $shop = new Shop();
+    
+        $shop->name = $request->name;
+        $shop->description = $request->description;
+        $shop->address = $request->address;
+        $shop->latitude = $request->latitude;
+        $shop->longitude = $request->longitude;
+
     }
 
     /**
@@ -57,7 +66,16 @@ class ShopController extends Controller
      */
     public function edit(Shop $shop)
     {
-        return view('shops.edit');
+        $shop = new Shop();
+
+        $shop->name = $request->name;
+        $shop->description = $request->description;
+        $shop->address = $request->address;
+        $shop->latitude = $request->latitude;
+        $shop->longitude = $request->longitude;
+        $shop->save();
+
+        return view('shops.show', compact('shop'));
     }
 
     /**
